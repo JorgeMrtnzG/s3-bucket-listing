@@ -262,16 +262,16 @@ function getInfoFromS3Data(xml) {
     // clang-format on
   });
   if ($(xml.find('IsTruncated')[0]).text() == 'true') {
-    var nextMarker = xml.find('NextMarker').textContent
+    var nextMarker = xml.find('NextMarker').text()
   } else {
-    var nextMarker = null;
+    var nextMarker = 'null';
   }
   // clang-format off
   return {
     files: files,
     directories: directories,
     prefix: prefix,
-    nextMarker: encodeURIComponent(nextMarker)
+    nextMarker: nextMarker
   }
   // clang-format on
 }
